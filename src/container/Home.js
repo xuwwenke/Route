@@ -6,14 +6,14 @@ import {HashRouter as Router,Route,Link} from 'react-router-dom'
 // import Job from './Jbo'
 export default class Home extends Component {
     render() {
-        let url=this.props.match.url//调到组件所控制的路径,可以通过路径拼接找到对应的组件
+        let url=this.props.match.url
         return (
             <div>
                 <div className='home'>
                     <Link to={url+'/all'}>全部</Link>
                     <Link to={url+'/good'}>精华</Link>
-                    <Link to={url+'/ask'}>问答</Link>
                     <Link to={url+'/share'}>分享</Link>
+                    <Link to={url+'/ask'}>问答</Link>
                     <Link to={url+'/job'}>招聘</Link>
                     <Link to={url+'/test'}>客户端测试</Link>
                 </div>
@@ -51,7 +51,7 @@ function All(){
                 <li key={item.id}>
                     <img src={item.author.avatar_url} style={{height:'40px',width:'40px',float:'left'}}/>
                     <li style={{width:'60px',height:'20px',border:'0',lineHeight:'20px',textAlign:'center',marginTop:'10px',marginLeft:'10px',fontSize:'12px'}}>{item.reply_count+'/'+item.visit_count}</li>
-                    <button style={{background:'red',color:'white',lineHeight:'20px',textAlign:'center',marginTop:'10px',height:'20px',width:'40px',borderRadius:'5px',border:'red',marginLeft:'10px',marginRight:'10px'}}>{item.tab}</button>
+                    <button style={{background:'gray',color:'white',lineHeight:'20px',textAlign:'center',marginTop:'10px',height:'20px',width:'40px',borderRadius:'5px',border:'red',marginLeft:'10px',marginRight:'10px'}}>{item.tab}</button>
                     <Link to={'/topics/'+item.id}>{item.title}</Link>
                 </li>)
             }
@@ -76,18 +76,13 @@ function Good(){
     return (
         <div className='all'>
             {
-                data.map((item)=>{
-                    if(item.tab=='good'){
-                        return (
-                            <li key={item.id}>
-                                <img src={item.author.avatar_url} style={{height:'40px',width:'40px',float:'left'}}/>
-                                <li style={{width:'60px',height:'20px',border:'0',lineHeight:'20px',textAlign:'center',marginTop:'10px',marginLeft:'10px',fontSize:'12px'}}>{item.reply_count+'/'+item.visit_count}</li>
-                                <button style={{background:'red',color:'white',lineHeight:'20px',textAlign:'center',marginTop:'10px',height:'20px',width:'40px',borderRadius:'5px',border:'red',marginLeft:'10px',marginRight:'10px'}}>{item.tab}</button>
-                                <Link to={'/topics/'+item.id}>{item.title}</Link>
-                            </li>
-                        )
-                    }
-                })
+                data.map((item)=>
+                <li key={item.id}>
+                    <img src={item.author.avatar_url} style={{height:'40px',width:'40px',float:'left'}}/>
+                    <li style={{width:'60px',height:'20px',border:'0',lineHeight:'20px',textAlign:'center',marginTop:'10px',marginLeft:'10px',fontSize:'12px'}}>{item.reply_count+'/'+item.visit_count}</li>
+                    <button style={{background:'red',color:'white',lineHeight:'20px',textAlign:'center',marginTop:'10px',height:'20px',width:'40px',borderRadius:'5px',border:'red',marginLeft:'10px',marginRight:'10px'}}>精华</button>
+                    <Link to={'/topics/'+item.id}>{item.title}</Link>
+                </li>)
             }
             <button className='btn' onClick={()=>{setPage(page=1)}}>1</button>
             <button className='btn' onClick={()=>{setPage(page=2)}}>2</button>
@@ -109,18 +104,13 @@ function Ask(){
     return (
         <div className='all'>
             {
-                data.map((item)=>{
-                    if(item.tab=='ask'){
-                        return (
-                            <li key={item.id}>
-                                <img src={item.author.avatar_url} style={{height:'40px',width:'40px',float:'left'}}/>
-                                <li style={{width:'60px',height:'20px',border:'0',lineHeight:'20px',textAlign:'center',marginTop:'10px',marginLeft:'10px',fontSize:'12px'}}>{item.reply_count+'/'+item.visit_count}</li>
-                                <button style={{background:'red',color:'white',lineHeight:'20px',textAlign:'center',marginTop:'10px',height:'20px',width:'40px',borderRadius:'5px',border:'red',marginLeft:'10px',marginRight:'10px'}}>{item.tab}</button>
-                                <Link to={'/topics/'+item.id}>{item.title}</Link>
-                            </li>
-                        )
-                    }
-                })
+                data.map((item)=>
+                <li key={item.id}>
+                    <img src={item.author.avatar_url} style={{height:'40px',width:'40px',float:'left'}}/>
+                    <li style={{width:'60px',height:'20px',border:'0',lineHeight:'20px',textAlign:'center',marginTop:'10px',marginLeft:'10px',fontSize:'12px'}}>{item.reply_count+'/'+item.visit_count}</li>
+                    {/* <button style={{background:'red',color:'white',lineHeight:'20px',textAlign:'center',marginTop:'10px',height:'20px',width:'40px',borderRadius:'5px',border:'red',marginLeft:'10px',marginRight:'10px'}}>{item.tab}</button> */}
+                    <Link to={'/topics/'+item.id}>{item.title}</Link>
+                </li>)
             }
             <button className='btn' onClick={()=>{setPage(page=1)}}>1</button>
             <button className='btn' onClick={()=>{setPage(page=2)}}>2</button>
@@ -142,18 +132,13 @@ function Share(){
     return (
         <div className='all'>
             {
-                data.map((item)=>{
-                    if(item.tab=='share'){
-                        return (
-                            <li key={item.id}>
-                                <img src={item.author.avatar_url} style={{height:'40px',width:'40px',float:'left'}}/>
-                                <li style={{width:'60px',height:'20px',border:'0',lineHeight:'20px',textAlign:'center',marginTop:'10px',marginLeft:'10px',fontSize:'12px'}}>{item.reply_count+'/'+item.visit_count}</li>
-                                <button style={{background:'red',color:'white',lineHeight:'20px',textAlign:'center',marginTop:'10px',height:'20px',width:'40px',borderRadius:'5px',border:'red',marginLeft:'10px',marginRight:'10px'}}>{item.tab}</button>
-                                <Link to={'/topics/'+item.id}>{item.title}</Link>
-                            </li>
-                        )
-                    }
-                })
+                data.map((item)=>
+                <li key={item.id}>
+                    <img src={item.author.avatar_url} style={{height:'40px',width:'40px',float:'left'}}/>
+                    <li style={{width:'60px',height:'20px',border:'0',lineHeight:'20px',textAlign:'center',marginTop:'10px',marginRight:'10px',marginLeft:'10px',fontSize:'12px'}}>{item.reply_count+'/'+item.visit_count}</li>
+                    {/* <button style={{background:'red',color:'white',lineHeight:'20px',textAlign:'center',marginTop:'10px',height:'20px',width:'40px',borderRadius:'5px',border:'red',marginLeft:'10px',marginRight:'10px'}}>{item.tab}</button> */}
+                    <Link to={'/topics/'+item.id}>{item.title}</Link>
+                </li>)
             }
             <button className='btn' onClick={()=>{setPage(page=1)}}>1</button>
             <button className='btn' onClick={()=>{setPage(page=2)}}>2</button>
@@ -175,18 +160,13 @@ function Job(){
     return (
         <div className='all'>
             {
-                data.map((item)=>{
-                    if(item.tab=='job'){
-                        return (
-                            <li key={item.id}>
-                                <img src={item.author.avatar_url} style={{height:'40px',width:'40px',float:'left'}}/>
-                                <li style={{width:'60px',height:'20px',border:'0',lineHeight:'20px',textAlign:'center',marginTop:'10px',marginLeft:'10px',fontSize:'12px'}}>{item.reply_count+'/'+item.visit_count}</li>
-                                <button style={{background:'red',color:'white',lineHeight:'20px',textAlign:'center',marginTop:'10px',height:'20px',width:'40px',borderRadius:'5px',border:'red',marginLeft:'10px',marginRight:'10px'}}>{item.tab}</button>
-                                <Link to={'/topics/'+item.id}>{item.title}</Link>
-                            </li>
-                        )
-                    }
-                })
+                data.map((item)=>
+                <li key={item.id}>
+                    <img src={item.author.avatar_url} style={{height:'40px',width:'40px',float:'left'}}/>
+                    <li style={{width:'60px',height:'20px',border:'0',lineHeight:'20px',textAlign:'center',marginTop:'10px',marginLeft:'10px',fontSize:'12px'}}>{item.reply_count+'/'+item.visit_count}</li>
+                    {/* <button style={{background:'red',color:'white',lineHeight:'20px',textAlign:'center',marginTop:'10px',height:'20px',width:'40px',borderRadius:'5px',border:'red',marginLeft:'10px',marginRight:'10px'}}>{item.tab}</button> */}
+                    <Link to={'/topics/'+item.id}>{item.title}</Link>
+                </li>)
             }
             <button className='btn' onClick={()=>{setPage(page=1)}}>1</button>
             <button className='btn' onClick={()=>{setPage(page=2)}}>2</button>
@@ -208,18 +188,13 @@ function Test(){
     return (
         <div className='all'>
             {
-                data.map((item)=>{
-                    if(item.tab=='dev'){
-                        return (
-                            <li key={item.id}>
-                                <img src={item.author.avatar_url} style={{height:'40px',width:'40px',float:'left'}}/>
-                                <li style={{width:'60px',height:'20px',border:'0',lineHeight:'20px',textAlign:'center',marginTop:'10px',marginLeft:'10px',fontSize:'12px'}}>{item.reply_count+'/'+item.visit_count}</li>
-                                <button style={{background:'red',color:'white',lineHeight:'20px',textAlign:'center',marginTop:'10px',height:'20px',width:'40px',borderRadius:'5px',border:'red',marginLeft:'10px',marginRight:'10px'}}>{item.tab}</button>
-                                <Link to={'/topics/'+item.id}>{item.title}</Link>
-                            </li>
-                        )
-                    }
-                })
+                data.map((item)=>
+                <li key={item.id}>
+                    <img src={item.author.avatar_url} style={{height:'40px',width:'40px',float:'left'}}/>
+                    <li style={{width:'60px',height:'20px',border:'0',lineHeight:'20px',textAlign:'center',marginTop:'10px',marginRight:'10px',marginLeft:'10px',fontSize:'12px'}}>{item.reply_count+'/'+item.visit_count}</li>
+                    {/* <button style={{background:'red',color:'white',lineHeight:'20px',textAlign:'center',marginTop:'10px',height:'20px',width:'40px',borderRadius:'5px',border:'red',marginLeft:'10px',marginRight:'10px'}}>{item.tab}</button> */}
+                    <Link to={'/topics/'+item.id}>{item.title}</Link>
+                </li>)
             }
             <button className='btn' onClick={()=>{setPage(page=1)}}>1</button>
             <button className='btn' onClick={()=>{setPage(page=2)}}>2</button>
